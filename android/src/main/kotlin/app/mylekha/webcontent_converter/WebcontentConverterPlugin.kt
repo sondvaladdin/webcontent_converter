@@ -54,7 +54,6 @@ class WebcontentConverterPlugin : FlutterPlugin, MethodCallHandler, ActivityAwar
         val arguments = call.arguments as Map<*, *>
         val content = arguments["content"] as String
         var duration = arguments["duration"] as Double?
-        val scale = arguments["scale"] as Int
         var savedPath = arguments["savedPath"] as? String
         var margins = arguments["margins"] as Map<String, Double>?
         var format = arguments["format"] as Map<String, Double>?
@@ -70,7 +69,7 @@ class WebcontentConverterPlugin : FlutterPlugin, MethodCallHandler, ActivityAwar
                 print("\ndheight : $dheight")
                 webView.layout(0, 0, dwidth, dheight)
                 webView.loadDataWithBaseURL(null, content, "text/HTML", "UTF-8", null)
-                webView.setInitialScale(scale)
+                webView.setInitialScale(1)
                 webView.settings.javaScriptEnabled = true
                 webView.settings.useWideViewPort = true
                 webView.settings.javaScriptCanOpenWindowsAutomatically = true
